@@ -1,11 +1,12 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import LoginForm from '@/components/auth/login-form';
 import { useEffect } from 'react';
 import { toast } from 'sonner';
 
-export default function LoginPage() {
+function LoginPageInner() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -18,4 +19,12 @@ export default function LoginPage() {
   }, [searchParams]);
 
   return <LoginForm />;
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading login...</div>}>
+      <LoginPageInner />
+    </Suspense>
+  );
 }
