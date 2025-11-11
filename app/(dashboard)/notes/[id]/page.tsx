@@ -14,7 +14,7 @@ import {
 import { useRef } from 'react';
 import dynamic from 'next/dynamic';
 import api from '@/lib/axios';
-import NoteEditor from '@/components/notes/note-editor';
+import NotionEditor from '@/components/notes/notion-editor';
 import { getImageUrl } from '@/lib/utils';
 
 // Dynamic import for dropdowns
@@ -293,7 +293,7 @@ export default function NoteDetailPage() {
         </div>
 
         {/* Editor */}
-        <NoteEditor content={content} onChange={handleContentChange} />
+        <NotionEditor content={content} onChange={handleContentChange} />
       </div>
 
       {/* AI Modal */}
