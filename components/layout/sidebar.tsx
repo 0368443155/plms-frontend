@@ -13,8 +13,11 @@ import {
   LogOut,
   Plus,
   Database,
+  BookOpen,
+  Clock,
 } from 'lucide-react';
 import { clearAuth, getAuth } from '@/lib/auth';
+import NotificationsBell from './notifications-bell';
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -39,19 +42,25 @@ export default function Sidebar() {
     { icon: FileText, label: 'Ghi chú', href: '/notes' },
     { icon: Search, label: 'Tìm kiếm', href: '/search' },
     { icon: Trash2, label: 'Thùng rác', href: '/trash' },
+    { icon: BookOpen, label: 'Môn học', href: '/subjects' },
+    { icon: Clock, label: 'Thời khóa biểu', href: '/schedules' },
     { icon: Calendar, label: 'Lịch', href: '/calendar' },
     { icon: Database, label: 'Bảng dữ liệu', href: '/databases' },
-    { icon: Bell, label: 'Thông báo', href: '/notifications' },
     { icon: User, label: 'Hồ sơ', href: '/profile' },
   ];
 
   return (
     <div className="w-64 bg-gray-50 min-h-screen border-r border-gray-200 flex flex-col">
       <div className="p-4 border-b border-gray-200">
-        <h1 className="text-xl font-bold text-gray-900">PLMS</h1>
-        {user && (
-          <p className="text-sm text-gray-600 mt-1">{user.fullName}</p>
-        )}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-bold text-gray-900">PLMS</h1>
+            {user && (
+              <p className="text-sm text-gray-600 mt-1">{user.fullName}</p>
+            )}
+          </div>
+          <NotificationsBell />
+        </div>
       </div>
 
       <div className="p-4">
